@@ -1,0 +1,1 @@
+export { default as foodReducer, foodActions, foodSlice } from './foodSlice'
