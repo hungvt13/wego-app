@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { LOADING_STATE } from '../constants';
 
 const initialState = {
+  foodListStatus: LOADING_STATE.IDLE,
   foodList: [],
 };
 
@@ -8,9 +10,13 @@ export const foodSlice = createSlice({
   name: 'foodState',
   initialState: initialState,
   reducers: {
-    changeFoodList: (state, action) => {
+    fetchFoodListSuccess: (state, action) => {
+      state.foodListStatus = LOADING_STATE.SUCCESS;
       state.foodList = action.payload;
     },
+    fetchFood: (state) => {
+      state.foodListStatus = LOADING_STATE.LOADING;
+    }
 }});
 
 
