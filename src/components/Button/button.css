@@ -1,0 +1,21 @@
+.button {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 400;
+  font-family: inherit;
+  background-color: white;
+  color: black;
+  border: 2px solid #ffebc1;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border-radius: 8px;
+}
+
+.button:hover:not(.active) {
+  background-color: #ffeca6;
+}
+
+.button.active {
+  background-color: #ffc700;
+  border-color: #ffc700;
+}

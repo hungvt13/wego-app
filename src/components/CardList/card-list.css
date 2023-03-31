@@ -1,0 +1,23 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-item {
+  display: flex;
+  padding: 1rem;
+}
+
+/* Small devices */
+@media (min-width: 975px) and (max-width: 1365px) {
+  .card-item {
+    width: 30%;
+  }
+}
+
+/* Large desktops and up */
+@media (min-width: 1366px) {
+  .card-item {
+    width: 20%;
+  }
+}
