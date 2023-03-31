@@ -1,0 +1,45 @@
+.input-container {
+  display: flex;
+  width: 40vw;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid rgb(214, 214, 214);
+  overflow: hidden;
+}
+
+.input-container .icon {
+  background-color: white;
+  padding: 10px 2px 10px 10px;
+  color: slategray;
+  min-width: 20px;
+  text-align: center;
+}
+
+.input-container .user-input {
+  background-color: white;
+  border: none;
+  padding: 10px 10px 10px 0px;
+  color: black;
+  width: 100%;
+}
+
+/* Extra small devices */
+@media (max-width: 974px) {
+  .input-container {
+    width: 100%;
+  }
+}
+
+/* Small devices */
+@media (min-width: 975px) and (max-width: 1365px) {
+  .input-container {
+    width: 30vw;
+  }
+}
+
+/* Large desktops and up */
+@media (min-width: 1366px) {
+  .input-container {
+    width: 40vw;
+  }
+}
