@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 import './tabs.css';
 
-function Tabs({ list, onClick }) {
+function Tabs({ list, onClick, dataTestId }) {
   const [active, setActive] = useState(0);
   const populatedList = [{ id: '', name: 'All'}, ...list];
 
@@ -25,6 +25,7 @@ function Tabs({ list, onClick }) {
             className='tab'
             active={index === active}
             onClick={(e) => handleClick(e, index, id)}
+            data-testid={`${dataTestId}`}
           >{name}
         </Button>
         ))
@@ -39,10 +40,12 @@ Tabs.propTypes = {
     name: PropTypes.string,
   })),
   onClick: PropTypes.func,
+  dataTestId: PropTypes.string
 };
 
 Tabs.defaultProps = {
   onClick: () => {},
+  dataTestId: 'Tabs'
 };
 
 export default Tabs;

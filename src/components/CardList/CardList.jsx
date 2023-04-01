@@ -6,18 +6,22 @@ import CardListSkeleton from '../SkeletonLoading/CardListSkeleton';
 
 import './card-list.css';
 
-function CardList({ list, className, isLoading, ...restProps }) {
+function CardList({ list, className, isLoading, dataTestId, ...restProps }) {
 
   if (isLoading) {
     return <CardListSkeleton />;
   }
 
   return (
-    <div className={clsx('cards-container', className)} {...restProps}>
+    <div 
+      className={clsx('cards-container', className)}
+      data-testid={dataTestId}
+      {...restProps}
+    >
       {
         list && list.map(({ id, ...restItemProps }, index) => (
-          <div key={id ?? index} className='card-item'>
-            <Card {...restItemProps} />
+          <div key={id ?? index} className='card-item' >
+            <Card dataTestId={`${dataTestId}-item`} {...restItemProps} />
           </div>
         )) 
       }
@@ -35,6 +39,7 @@ CardList.propTypes = {
     })),
   })).isRequired,
   className: PropTypes.string,
+  dataTestId: PropTypes.string,
   isLoading: PropTypes.bool,
 };
 

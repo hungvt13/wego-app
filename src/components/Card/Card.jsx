@@ -7,9 +7,9 @@ import CardContent from './CardContent';
 import CardImage from './CardImage';
 import CardIcon from './CardIcon';
 
-function Card({ img, title, iconType, imgProps, tags }) {
+function Card({ img, title, iconType, imgProps, tags, dataTestId }) {
   return (
-    <div className='card-container'>
+    <div className='card-container' data-testId={dataTestId}>
       <CardIcon type={iconType} />
       <CardImage img={img} {...imgProps}/>
       <CardContent title={title} tags={tags} />
@@ -20,6 +20,7 @@ function Card({ img, title, iconType, imgProps, tags }) {
 Card.propTypes = {
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  dataTestId: PropTypes.string,
   iconType: PropTypes.string,
   imgProps: PropTypes.object,
   tags: PropTypes.arrayOf(PropTypes.shape({
