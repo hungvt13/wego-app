@@ -13,7 +13,7 @@ function CardContent({ title, tags }) {
         {
           tags && tags.map((tagProps, index) => <Tag key={index} {...tagProps} />)
         }
-        <Tag />
+        <Tag tags={tags}/>
       </div>
     </div>
   );
@@ -23,7 +23,7 @@ CardContent.propTypes = {
   title: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string.isRequired,
-    content: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   })),
 };
 

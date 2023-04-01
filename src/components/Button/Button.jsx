@@ -15,7 +15,10 @@ function Button({ children, className, active, ...restProps }) {
 }
 
 Button.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.node
+  ]).isRequired,
   className: PropTypes.string,
   active: PropTypes.bool
 };
