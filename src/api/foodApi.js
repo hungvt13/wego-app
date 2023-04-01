@@ -11,7 +11,7 @@ const getFoodList = () => {
   return Api.get(listURL);
 };
 
-export {
+export default {
   getFoodCategories,
   getFoodList,
 };

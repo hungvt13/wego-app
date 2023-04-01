@@ -4,12 +4,9 @@ import PropTypes from 'prop-types';
 
 import './tag.css';
 
-const TAG_TYPES = {
-  RATING: 'rating',
-  NEW: 'new',
-  TIME: 'time',
-};
+import { TAG_TYPES } from './constants';
 
+// eslint-disable-next-line react/prop-types
 function TagGenerator ({ type, content, ...restProps }) {
   switch (type) {
     case TAG_TYPES.RATING:
@@ -27,12 +24,6 @@ function TagGenerator ({ type, content, ...restProps }) {
       return null;
   }
 }
-
-TagGenerator.propTypes = {
-  type: PropTypes.oneOfType([Object.values(TAG_TYPES)]).isRequired,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
-  className: PropTypes.string,
-};
 
 function Tag({ type, content, className, ...restProps }) {
   return (
@@ -53,9 +44,17 @@ function Tag({ type, content, className, ...restProps }) {
 }
 
 Tag.propTypes = {
-  type: PropTypes.oneOfType([Object.values(TAG_TYPES)]).isRequired,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+  type: PropTypes.oneOf(Object.values(TAG_TYPES)),
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.node
+  ]),
   className: PropTypes.string,
+};
+
+Tag.defaultProps = {
+  content: 'a',
 };
 
 export default memo(Tag);

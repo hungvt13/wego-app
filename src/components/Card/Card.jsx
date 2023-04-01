@@ -5,22 +5,26 @@ import './card.css';
 
 import CardContent from './CardContent';
 import CardImage from './CardImage';
+import CardIcon from './CardIcon';
 
-function Card({ img, imgProps, tags }) {
+function Card({ img, title, iconType, imgProps, tags }) {
   return (
     <div className='card-container'>
+      <CardIcon type={iconType} />
       <CardImage img={img} {...imgProps}/>
-      <CardContent tags={tags} />
+      <CardContent title={title} tags={tags} />
     </div>
   );
 }
 
 Card.propTypes = {
   img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  iconType: PropTypes.string,
   imgProps: PropTypes.object,
   tags: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string.isRequired,
-    content: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   })),
 };
 

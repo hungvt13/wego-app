@@ -1,15 +1,15 @@
 .tab {
-  margin-right: -2px;
-  border-radius: 0px;
+  margin-right: -0.125rem;
   /* overide button radius */
+  border-radius: 0;
 }
 
 .tab-container .tab:first-child {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 }
 
 .tab-container .tab:last-child {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }

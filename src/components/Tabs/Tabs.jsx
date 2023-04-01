@@ -7,24 +7,25 @@ import './tabs.css';
 
 function Tabs({ list, onClick }) {
   const [active, setActive] = useState(0);
+  const populatedList = [{ id: '', name: 'All'}, ...list];
 
-  const handleClick = (e, tabIndex) => {
+  const handleClick = (e, tabIndex, id) => {
     e.preventDefault();
 
     setActive(tabIndex);
-    onClick && onClick();
+    onClick && onClick(id);
   };
 
   return (
     <div className='tab-container'>
       {
-        list.length !== 0 && list.map((tab, index) => (
+        populatedList.length !== 0 && populatedList.map(({ id, name }, index) => (
           <Button 
-            key={index}
+            key={id ?? index}
             className='tab'
             active={index === active}
-            onClick={(e) => handleClick(e, index)}
-          >{tab}
+            onClick={(e) => handleClick(e, index, id)}
+          >{name}
         </Button>
         ))
       }
@@ -33,7 +34,10 @@ function Tabs({ list, onClick }) {
 }
 
 Tabs.propTypes = {
-  list: PropTypes.arrayOf(PropTypes.string),
+  list: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+  })),
   onClick: PropTypes.func,
 };
 
