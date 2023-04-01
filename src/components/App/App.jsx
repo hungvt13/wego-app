@@ -11,7 +11,7 @@ import useFood from '../../hooks/useFood';
 
 function App() {
   const useFoodHook = useFood();
-  
+
   return (
     <div className="app-container">
       <div>
@@ -20,22 +20,31 @@ function App() {
           value={useFoodHook.search}
           onChange={useFoodHook.handleSearchChange}
           disabled={useFoodHook.isPageLoading}
+          data-testid='retaurant-input'
         />
       </div>
       <div>
         {
           !useFoodHook.isLoadingCategory && (
-            <Tabs list={useFoodHook.categoryData} onClick={useFoodHook.handleClickCategory}/>
+            <Tabs 
+              list={useFoodHook.categoryData} 
+              onClick={useFoodHook.handleClickCategory}
+              dataTestId='category-tab'
+            />
           )
         }
       </div>
       <div>
-        <CardList list={useFoodHook.foodListData} isLoading={useFoodHook.isLoadingList} />
+        <CardList 
+          list={useFoodHook.foodListData}
+          isLoading={useFoodHook.isLoadingList}
+          dataTestId='retaurant-cards'
+        />
       </div>
       {
         useFoodHook.isMoreItems && (
           <div id="show-more-section">
-            <Button onClick={useFoodHook.handleShowMore}>
+            <Button onClick={useFoodHook.handleShowMore} data-testid='show-more-btn'>
               <strong>+ Show More</strong>
             </Button>
           </div>
